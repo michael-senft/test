@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 
 <html>
 <head>
@@ -18,25 +18,25 @@
                 bottom : 40px;  
                 left : 0;     
        			   }
-		#map-canvas {
-            height: 100%;
-            margin: 0px;
-            padding: 0px;
-			width:100%;
-        }
         
 		
     </style>
 	
     
 </head>
-<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true"></script>
-<script type="text/javascript" charset="utf-8" src="phonegap-1.2.0.js"></script>
-<!--<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&libraries=drawing"></script>-->
+<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&libraries=drawing"></script>
     <script>
-			
-		//$(document).on('pageshow', '#page2',function(e,data){  
-		
+	var map;
+	$(document).ready(function()
+	{
+	
+	});
+       	
+		$(document).on('pageshow', '#page2',function(e,data){ 
+		 var element = document.getElementById('map-canvas');
+		 element.innerHTML = "Loading Map please wait...";
+		 
+		});
 		document.addEventListener("deviceready", onDeviceReady, false);
 			
     		var watchID = null;
@@ -46,7 +46,7 @@
 			function onDeviceReady() {
 				//alert()
 				// Update every 3 seconds
-				var options = { frequency: 1000 };
+				var options = { frequency: 1 };
 				watchID = navigator.geolocation.watchPosition(onSuccess, onError, options);
 			}
 
@@ -54,16 +54,102 @@
     //
 			function onSuccess(position) {
 				
-				var minZoomLevel = 10;
-		 
-				   var map = new google.maps.Map(document.getElementById('map-canvas'), {
+				$.ajax(
+	 			{
+	 			type:"GET",
+	 			url:"getpoints.php",
+	 			success:callback
+	 			}
+	 				  )
+				
+				   var minZoomLevel = 10;
+				   var lat = position.coords.latitude;
+				   var long = position.coords.longitude;
+				   map = new google.maps.Map(document.getElementById('map-canvas'), {
 					  zoom: minZoomLevel,
 					  center: new google.maps.LatLng(position.coords.latitude,position.coords.longitude),
-					  mapTypeId: google.maps.MapTypeId.ROADMAP
-					  
-					  
+					  mapTypeId: google.maps.MapTypeId.ROADMAP,
+					  draggable : false
+					  });
+					  var myLatlng = new google.maps.LatLng(position.coords.latitude,position.coords.longitude);
+					  var marker = new google.maps.Marker({
+      				  position: myLatlng,
+      				  map: map   
 				   });
-				   google.maps.event.trigger(map, 'resize');
+				   Addcord(lat,long,map);
+				   
+				  google.maps.event.trigger(map, 'resize');
+				   
+			}
+			function Addcord(lat,long)
+			{
+				   	
+				$.ajax({
+				type:"POST",
+				url: "phpgraden.php",
+				data: "later=" + lat + "\u0026longer="+ long,
+				success: function(){
+				
+				}
+				});
+					
+			}
+			
+			$(document).ready(function()
+	 		{
+	 	
+	 			
+	 			});
+	 			
+	 
+	 		function callback(data,status)
+	 		{
+	 	
+	 			var jsArr = JSON.parse(data);
+	 			var path = new Array();
+	 			
+	 			
+				DrawPoly(path);
+	 		}
+			
+			
+			function DrawPoly(path)
+			{
+				alert();
+				
+				/*
+					  var flightPath = new google.maps.Polyline({
+						path: flightPlanCoordinates,
+						geodesic: true,
+						strokeColor: '#FF0000',
+						strokeOpacity: 1.0,
+						strokeWeight: 2
+				  });
+				
+				  flightPath.setMap(map);
+				  */
+				for(var i=0;i<jsArr.length;i++)
+	 			{
+	 				path[i] = new google.maps.LatLng(jsArr[i].lengte, jsArr[i].breedte);
+					var lijnen = [path[i]];
+	  
+    //finish loop
+
+    				var polyline = new google.maps.Polyline({
+      									path: lijnen,
+										geodesic: true,
+      									strokeColor: "#FF0000",
+      									strokeOpacity: 1.0,
+      									strokeWeight: 2
+    									});
+	 				polyline.setMap(map);
+	 			}
+				
+    
+
+
+		
+   
 			}
 
     // onError Callback receives a PositionError object
@@ -74,20 +160,22 @@
 			}  
 				  
 						
-				//});
+				
+				
 
-    </script>
+   </script>
     <script>
 	$(document).on("swiperight", function(events, ui) {
 		$("#myPanel").panel("open", {display: 'overlay', position: 'left'} );
 	});
 	</script>
 <body>
-			<!-- Start of first page I -->
-		<div data-role="page" id="page1">
+
+		    <!-- Start of first page I -->
+		  <div data-role="page" id="page1">
 			<!-- Header -->
 			<div data-role="header" data-position="fixed">
-				<h1>Login</h1>
+				<h1>GPS DRAWING GAME</h1>
 
 			</div>
 			<!-- /header -->
@@ -100,9 +188,27 @@
                 <label for="basic">Password:</label>
 				<input type="text" name="password" id="password" data-mini="true" />
                 <a href="#page2" data-role="button" data-transition="flip" id="logbtn">Log in</a>
+                <a href="#page4" data-role="button" data-transition="flip" id "RegisterButton">Register</a>
                 </div>
-				
+            </div>
+         </div>
+                
+		  <!-- start of second page -->
+         <div data-role="page" id="page2">	
+          <!-- header of second page -->	
+          	<div date-role="header" data-position="fixed">
+          		<h1>Mode Selection</h1>
 			</div>
+          
+            <!-- /header -->
+			<!-- Content    -->
+            <div data-role="content" id="ModeSelection">
+            	<div id="Modediv" style="height:100%">
+         			<a href="#page3" data-role="button" data-transition="flip" id="KidsButton">Kids Mode</a>
+         			<a href="#page3" data-role="button" data-transition="flip" id="ChalButton">Challenger Mode</a>
+         			<a href="#page3" data-role="button" data-transition="flip" id="FreeButton">Free Mode</a>
+           		</div>
+            </div>
 			<!-- /content -->
 			
 			<!-- footer -->
@@ -113,22 +219,20 @@
 		</div>
 		<!-- /page -->
         
-        <div data-role="page" id="page2">
+        <div data-role="page" id="page3">
         	<div data-role="panel" id="myPanel" class="ui-response" data-content-theme="b">
             <p>hier kan vanalles van menu in komen, opties? </p> 
             </div>
 			<!-- Header -->
 			<div data-role="header" data-position="fixed">
-            	<a href="#page1" data-role="button" data-transition="pop" data-icon="arrow-l">Back</a>
+            	<a href="#page1" data-role="button" data-transition="pop">Back</a>
 				<h1>map</h1>
 
 			</div>
 			<!-- /header -->
 			<!-- Content    -->
 			<div data-role="content" id="content">
-            	<a href="#myPanel" data-role="button" data-display="overlay" data-dismissible="true">Menu</a>
-				<div id="map-canvas"></div>
-				
+				<div id="map-canvas" style="height:100%"></div>
 			</div>
 			<!-- /content -->
 			
@@ -138,6 +242,41 @@
 			</div-->
 			<!-- /footer -->
 		</div>
+        		    <!-- Start of first page I -->
+		    <div data-role="page" id="page4">
+			<!-- Header -->
+			<div data-role="header" data-position="fixed">
+				<h1>REGISTER PAGE</h1>
+            </div>
+            <div data-role="content" id="">
+                <label for="basic">Username:</label>
+				<input type="text" name="username" id="username" data-mini="true" />
+                <label for="basic">Password:</label>
+				<input type="text" name="password" id="password" data-mini="true" />
+                <label for="basic">Repeat Password:</label>
+				<input type="text" name="password" id="password" data-mini="true" />
+                <label for="basic">Email adress:</label>
+				<input type="text" name="password" id="password" data-mini="true" />
+            </div>
+            <div class="ui-body ui-body-b">
+				<fieldset class="ui-grid-a">
+			<div class="ui-block-a"><div data-corners="true" data-shadow="true" data-iconshadow="true" data-wrapperels="span" data-icon="null" data-iconpos="null" data-theme="d" class="ui-btn ui-shadow ui-btn-corner-all ui-submit ui-btn-up-d" aria-disabled="false"><span class="ui-btn-inner ui-btn-corner-all"><span class="ui-btn-text"><a href="#page1" data-role="button" data-transition="pop" data-mini="true">Cancel</a></span></span></div></div>
+				<div class="ui-block-b"><div data-corners="true" data-shadow="true" data-iconshadow="true" data-wrapperels="span" data-icon="null" data-iconpos="null" data-theme="a" class="ui-btn ui-shadow ui-btn-corner-all ui-submit ui-btn-up-a" aria-disabled="false"><span class="ui-btn-inner ui-btn-corner-all"><span class="ui-btn-text"><a href="#page1" data-role="button" data-transition="pop" data-mini="true">Submit</a></span></span></div></div>
+	    		</fieldset>
+		</div>
+
+			
+			<!-- /header -->
+			<!-- Content    -->
+			
+            
+				<div id="logindiv" style="height:100%">
+                
+                
+               
+                </div>
+                </div>
+            
     
 </body>
 </html>
