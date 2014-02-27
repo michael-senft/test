@@ -4,6 +4,8 @@
 <head>
     <title>login</title>
     <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.1/jquery.mobile-1.4.1.min.css" />
+    <script type="text/javascript" charset"utf-8" src="phonegap-1.2.0.js"></script>
+    <script type="text/javascript" charset="utf-8"></script>
 	<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
 	<script src="http://code.jquery.com/mobile/1.4.1/jquery.mobile-1.4.1.min.js"></script>
     
@@ -76,7 +78,7 @@
       				  position: myLatlng,
       				  map: map   
 				   });
-				   Addcord(lat,long,map);
+				   Addcord(lat,long);
 				   
 				  google.maps.event.trigger(map, 'resize');
 				   
@@ -198,6 +200,7 @@
           <!-- header of second page -->	
           	<div date-role="header" data-position="fixed">
           		<h1>Mode Selection</h1>
+                
 			</div>
           
             <!-- /header -->
