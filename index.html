@@ -6,14 +6,15 @@
 <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.1/jquery.mobile-1.4.1.min.css" />
 	<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
 	<script src="http://code.jquery.com/mobile/1.4.1/jquery.mobile-1.4.1.min.js"></script>
-    <script type="text/javascript" src="jquery-1.4.4.min.js"></script>
-    <script type="text/javascript" language="javascript" src="html2canvas.js"></script>
-	<script type="text/javascript" src="SocialSharing.js"></script>
-	
+    <script type="text/javascript" src="../../GPS-drawing-game/maxim lege html's/jquery-1.4.4.min.js"></script>
+    <script type="text/javascript" language="javascript" src="../../GPS-drawing-game/maxim lege html's/html2canvas.js"></script>
+	<script type="text/javascript" src="../../GPS-drawing-game/maxim lege html's/SocialSharing.js"></script>
+	<script type="text/javascript" charset="utf-8" src="../../GPS-drawing-game/maxim lege html's/cordova-2.0.0.js"></script>
+    <script type="text/javascript" charset="utf-8" src="../../GPS-drawing-game/maxim lege html's/cordova.js"></script>
 
- <script type="text/javascript" language="javascript" src="html2canvas.min.js">
+ <script type="text/javascript" language="javascript" src="../../GPS-drawing-game/maxim lege html's/html2canvas.min.js">
 </script>
-<script type="text/javascript" language="javascript" src="jquery.plugin.html2canvas.js">
+<script type="text/javascript" language="javascript" src="../../GPS-drawing-game/maxim lege html's/jquery.plugin.html2canvas.js">
 </script>
     
     <script type="text/javascript" charset="utf-8">
@@ -32,6 +33,7 @@
 		$('#aanmaak').html2canvas({
     onrendered : function(canvas) {
     var img = canvas.toDataURL();
+	alert(img);
    	window.plugins.socialsharing.share(null, null, img, null);
             }
         });
@@ -59,8 +61,8 @@
                 <label for="basic">Nickname:</label>
                 <input type="text" name="nickname" id="nickname" data-mini="true" />
                 <label for="basic">Avatar:</label>
-                <button onclick="screensh()">Screenshot</button>
-                <button onclick="window.plugins.socialsharing.share(null, null, 'data:image/png;base64,R0lGODlhDAAMALMBAP8AAP///wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACH5BAUKAAEALAAAAAAMAAwAQAQZMMhJK7iY4p3nlZ8XgmNlnibXdVqolmhcRQA7', null)">base64 image only</button>
+                <button onclick="screensh()">Screenshot share</button>
+                
                 
                 
                 
