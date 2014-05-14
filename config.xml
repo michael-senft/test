@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feature name="SocialSharing">
+  <param name="android-package" value="nl.xservices.plugins.SocialSharing" />
+</feature>
+<gap:plugin name="nl.x-services.plugins.socialsharing" />
