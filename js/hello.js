@@ -3,9 +3,10 @@
 
 function inloggen(id) {
     $.ajax({
-        url: "http://rest-service.guides.spring.io/greeting"
+        url: "http://ergorestdavid.cloudapp.net/Service1.svc/GetAllUsers"
     }).then(function (data) {
-        $('.greeting-id').append(data.id);
+        var des_data = JSON.parse(data);
+        $('.greeting-id').append(des_data);
         $('.greeting-content').append(data.content);
         
     });
