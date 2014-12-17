@@ -3,11 +3,13 @@
 
 function inloggen(id) {
     $.ajax({
-        url: "http://ergorestdavid.cloudapp.net/Service1.svc/GetAllUsers"
-    }).then(function (data) {
-        var des_data = JSON.parse(data);
-        $('.greeting-id').append(des_data.id);
-        $('.greeting-content').append(des_data.content);
+        type: "GET",
+        url: "http://ergorestdavid.cloudapp.net/Service1.svc/GetAllUsers",
+        dataType: "json",
+        succes: function(data){
+            document.getElementById('greeting-content').textContent = data.Naam;
+        }
+    })
         
     });
     document.getElementById('greeting-content').style.visibility = 'visible';
