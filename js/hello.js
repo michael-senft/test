@@ -8,7 +8,7 @@ function inloggen(id) {
         dataType: "json",
         success: function(data) {
             document.getElementById('greeting-content').textContent = data.Naam;
-            alert(data.Naam);
+            alert(data);
         }
     });
         
