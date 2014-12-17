@@ -6,9 +6,16 @@ function inloggen(id) {
         type: "GET",
         url: "http://ergorestdavid.cloudapp.net/Service1.svc/GetAllUsers",
         dataType: "json",
-        success: function(data) {
-            document.getElementById('greeting-content').textContent = String(data.Naam);
-            alert(String(data));
+        success: function (data) {
+
+            $.each(data.Naam, function (i, item) {
+
+                $('#greeting-content').append(item);
+                alert(item);
+            });
+
+            
+            
         }
     });
         
