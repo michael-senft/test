@@ -38,10 +38,10 @@
                         alert('success');
 
                         $.each(data, function (i, item) {
-                            /*if (data.Naam == Text('#textvak')) {
+                            if (item.Naam == document.getElementById('textvak').value) {
                                 alert("ingelogd");
-                            };*/
-                            alert(data.Naam);
+                            };
+                            alert(item.Naam);
                             $('#greeting-content').append(item.Naam);
                             
                         });
