@@ -41,8 +41,11 @@
                             if (item.Naam == document.getElementById('textvak').value) {
                                 alert("ingelogd");
                             };
-                            alert(item.Naam);
+                            
+                             alert(item.Naam);
                             $('#greeting-content').append(item.Naam);
+                            
+                           
                             
                         });
 
@@ -55,6 +58,28 @@
                 document.getElementById('greeting-content').style.visibility = 'visible';
                 document.getElementById('greeting-id').style.visibility = 'visible';
             };
+
+            
+            function inlog() {
+                $.ajax({
+                    type: "POST",
+                    url: "http://ergorestdavid.cloudapp.net/Service1.svc/GetAllUsers",
+                    data: document.getElementById('textvak').value + "," + document.getElementById('passvak').value,
+                    dataType: "json",
+                    success: function (data) {
+
+                        alert(data);
+
+                    
+                    }
+                });
+
+
+                document.getElementById('greeting-content').style.visibility = 'visible';
+                document.getElementById('greeting-id').style.visibility = 'visible';
+            };
+
+
         </script>
 
 	</head>
@@ -87,7 +112,7 @@
     Paswoord: <input type="password" name="pasword" class="textvakken" id="passvak" /><br />
 </form>
 <p></p>
-<a  class="button" id="inlogbutton" data-animation="11" onclick="gezever(this)">Log in</a>
+<a  class="button" id="inlogbutton" data-animation="11" onclick="inlog(this)">Log in</a>
                     <p></p>
                     <div>
                         <p class="greeting-id" id="greeting-id">The ID is </p>
