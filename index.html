@@ -15,7 +15,7 @@
         <script src="js/modernizr.custom.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
         <script src="js/hello.js"></script>
-        <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+        <!--<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>-->
 		<noscript>
 			<link rel="stylesheet" href="css/skel.css" />
 			<link rel="stylesheet" href="css/style.css" />
@@ -32,13 +32,18 @@
                 $.ajax({
                     type: "GET",
                     url: "http://ergorestdavid.cloudapp.net/Service1.svc/GetAllUsers",
+                    data: "{}",
+                    contentType: "application/json; charset=utf-8", 
                     dataType: "json",
                     success: function (data) {
 
+                        alert('success');
+
                         $.each(data.Naam, function (i, item) {
 
+                            alert(item)
                             $('#greeting-content').append(item);
-                            alert(item);
+                            
                         });
 
 
