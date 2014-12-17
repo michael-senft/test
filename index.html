@@ -62,7 +62,7 @@
             
             function inlog() {
                 $.ajax({
-                    type: "POST",
+                    type: "GET",
                     url: "http://ergorestdavid.cloudapp.net/Service1.svc/SigninUser/",
                     data: document.getElementById('uservak').value + "," + document.getElementById('passvak').value,
                     dataType: "json",
