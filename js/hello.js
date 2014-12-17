@@ -6,8 +6,8 @@ function inloggen(id) {
         url: "http://ergorestdavid.cloudapp.net/Service1.svc/GetAllUsers"
     }).then(function (data) {
         var des_data = JSON.parse(data);
-        $('.greeting-id').append(des_data);
-        $('.greeting-content').append(data.content);
+        $('.greeting-id').append(des_data.id);
+        $('.greeting-content').append(des_data.content);
         
     });
     document.getElementById('greeting-content').style.visibility = 'visible';
