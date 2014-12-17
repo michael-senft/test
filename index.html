@@ -38,8 +38,10 @@
                         alert('success');
 
                         $.each(data, function (i, item) {
-
-                            alert(item.Naam)
+                            if (data.Naam == Text('#textvak')) {
+                                alert("ingelogd");
+                            };
+                            //alert(item.Naam)
                             $('#greeting-content').append(item.Naam);
                             
                         });
@@ -81,8 +83,8 @@
                         </ul>
                     </nav>
                     <form>
-    Gebruikersnaam: <input type="text" name="username" class="textvakken" /><br />
-    Paswoord: <input type="password" name="pasword" class="textvakken" /><br />
+    Gebruikersnaam: <input type="text" name="username" class="textvakken" id="uservak" /><br />
+    Paswoord: <input type="password" name="pasword" class="textvakken" id="passvak" /><br />
 </form>
 <p></p>
 <a  class="button" id="inlogbutton" data-animation="11" onclick="gezever(this)">Log in</a>
