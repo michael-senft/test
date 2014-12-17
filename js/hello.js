@@ -7,8 +7,8 @@ function inloggen(id) {
         url: "http://ergorestdavid.cloudapp.net/Service1.svc/GetAllUsers",
         dataType: "json",
         success: function(data) {
-            document.getElementById('greeting-content').textContent = data.Naam;
-            alert(data);
+            document.getElementById('greeting-content').textContent = String(data.Naam);
+            alert(String(data));
         }
     });
         
