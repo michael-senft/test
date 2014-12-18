@@ -20,7 +20,7 @@
                     alert(data);
                     $.each(data, function (i, item) {
 
-                        $(".list").append('<li><a href="#" onclick="selectUser('+item.Id.toString()+')">' + item.Naam + "</a></li>");
+                        $(".list").append('<li><a href="#" onclick="selectUser('+ item.Id +')">' + item.Naam + "</a></li>");
 
                     });
                     $(".list").listview('refresh');
@@ -46,7 +46,7 @@
                     $(".list2").append("<li>" + data.Nummer + "</li>");
                 }
             });
-        });
+        };
     </script>
 </head>
 
