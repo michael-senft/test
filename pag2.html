@@ -24,7 +24,7 @@
 
         <script>
     
-    function getUser() {
+    $(function() {
         $.ajax({
             type: "GET",
             url: "http://ergorestdavid.cloudapp.net/Service1.svc/GetAllUsers",
@@ -40,7 +40,7 @@
                 $(".list").listview('refresh');
             }
         });
-    };
+    });
         </script>
 
 
