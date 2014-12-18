@@ -20,13 +20,15 @@
                     alert(data);
                     $.each(data, function (i, item) {
 
-                        $(".list").append("<li><a onclick='selectUser(item.Id);'>" + item.Naam + "</a></li>");
+                        $(".list").append("<li><a href='javascript:selectUser(item.Id);'>" + item.Naam + "</a></li>");
 
                     });
                     $(".list").listview('refresh');
                 }
             });
         });
+
+        $('#myLink').click(function () { MyFunction(); return false; });
 
         function selectUser(id) {
             var uri = "http://ergorestdavid.cloudapp.net/Service1.svc/GetUserInfo/" + id;
