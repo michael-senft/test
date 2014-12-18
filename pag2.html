@@ -40,10 +40,15 @@
                 success: function (data) {
 
                     alert(data.Adres);
-                    $(".list2").append("<li>" + data.Adres + "</li>");
-                    $(".list2").append("<li>" + data.GebruikersNaam + "</li>");
-                    $(".list2").append("<li>" + data.Naam + "</li>");
-                    $(".list2").append("<li>" + data.Nummer + "</li>");
+                    
+                    $.each(data, function (i, item) {
+
+                        $(".list2").append("<li>" + item.Adres + "</li>");
+                        $(".list2").append("<li>" + item.GebruikersNaam + "</li>");
+                        $(".list2").append("<li>" + item.Naam + "</li>");
+                        $(".list2").append("<li>" + item.Nummer + "</li>");
+                    });
+                    $(".list").listview('refresh');
                 }
             });
         };
