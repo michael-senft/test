@@ -38,7 +38,7 @@
                 dataType: "json",
                 success: function (data) {
 
-                    alert(data);
+                    alert(data.Adres);
                     $(".list2").append("<li>" + data.Adres + "</li>");
                     $(".list2").append("<li>" + data.GebruikersNaam + "</li>");
                     $(".list2").append("<li>" + data.Naam + "</li>");
@@ -58,11 +58,11 @@
         </div>
         <div data-role="content" class="content">
             <ul class="list" data-role="listview" data-inset="true" data-filter="true"></ul>
-
+            <ul class="list2" data-role="listview" data-inset="true" data-filter="true"></ul>
         </div>
 
-        <div data-role="footer" data-position="fixed" data-theme="a">
-            <ul class="list2" data-role="listview" data-inset="true" data-filter="true"></ul>
+        <div data-role="content" data-position="fixed" data-theme="a">
+            
 
             </div>
 
