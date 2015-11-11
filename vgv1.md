@@ -1,5 +1,5 @@
-# Voortgangsverslag 1 **Joske Vermeulen**
-# (Voorlopige) Titel onderwerp:
+# Voortgangsverslag 1 **Michael Senft**
+# (Voorlopige) Titel onderwerp: Monitoring for Microsoft Azure instances
 ## Promotors  
 * Tim Dams, tim.dams@ap.be  
 * Tim Van Broekhoven, tim.vanbroekhoven@aspex.be
