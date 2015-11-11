@@ -1,7 +1,8 @@
 # Voortgangsverslag 1 **Joske Vermeulen**
 # (Voorlopige) Titel onderwerp:
 ## Promotors  
-*Tim Dams, tim.dams@ap.be  *Tim Van Broekhoven, tim.vanbroekhoven@aspex.be
+*Tim Dams, tim.dams@ap.be  
+*Tim Van Broekhoven, tim.vanbroekhoven@aspex.be
 <!--Zet hier alle namen+email van je verschillende promotors (stagebegeleider, stagementor). Zeker in vet zetten indien er veranderingen hebben plaatsgevonden-->
 ## Abstract
 <!--Het abstract is een samenvatting van je totale bachelorproef, inclusief reeds gekende resultaten-->
