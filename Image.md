@@ -4,7 +4,7 @@
 De OS VHD voor de VM moet gebaseerd zijn op een Microsoft Azure gebaseerde image die **Windows Server**, **SQL server** of **Linux** bevat. 
 Ga naar (https://portal.azure.com/) en start een VM met **Windows Server 2012 R2** image. 
 
-  
+ ![Windows Server 2012 R2](images/image001.png)
   
 ###RDP naar de VM
 We hebben twee bestanden die op de VM geplaatst moeten worden.  

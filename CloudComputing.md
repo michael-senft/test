@@ -1,6 +1,6 @@
 ##Cloud Computing
 Cloud computing is een concept dat een wereldwijde toegang biedt aan gedeelde IT-resources die worden beheerd door een cloud service provider en niet door het bedrijf dat gebruik maakt van de middelen.  
-De voordelen om voor cloud computing te kiezen zijn:  
+De voordelen om voor cloud computing te kiezen zijn:    
 1. Availibility: Users hebben altijd de mogelijkheid om op hun services toegang te krijgen op eender welk moment.  
 2. Collaboration: Users zien de cloud als een manier om tegelijkertijd te werken aan gemeenschappelijke data en bestanden.  
 3. Elasticity: Aan de hand van de user zijn behoeften kunnen dynamisch zijn services aan gepast worden.  
